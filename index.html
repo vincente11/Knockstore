@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- skill:chrome -->
+<style>
+/* Credit line — bottom-right */
+.design-ui-credit {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  font: 11px/1 system-ui, sans-serif;
+  color: rgba(128,128,128,0.5);
+  pointer-events: none;
+  z-index: 2147483647;
+  transition: opacity 0.4s ease;
+  user-select: none;
+  letter-spacing: 0.02em;
+}
+
+/* Hide chrome on touch devices */
+@media (hover: none) {
+  .design-ui-credit { display: none; }
+}
+
+/* Print fixes */
+@media print {
+  * {
+    transition: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+  }
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .design-ui-credit { display: none !important; }
+}
+
+</style>
+<script>
+(function () {
+    // Design-ui pages are single compositions, so the whole body is editable.
+    function markEditable() {
+        document.body.classList.add('artifact-editable');
+    }
+
+    // Credit badge with idle-fade. Hover devices only.
+    function initChromeUI() {
+        if (!matchMedia('(hover: hover)').matches) return;
+
+        var credit = document.createElement('div');
+        credit.className = 'design-ui-credit';
+        credit.setAttribute('aria-hidden', 'true');
+        credit.innerHTML = '💜 by ClickUp Brain';
+        document.body.appendChild(credit);
+
+        var timer = null;
+        var fade = function (out) { credit.style.opacity = out ? '0' : ''; };
+        fade(true);
+        var show = function () {
+            fade(false);
+            clearTimeout(timer);
+            timer = setTimeout(function () { fade(true); }, 3000);
+        };
+        document.addEventListener('mousemove', show);
+        show();
+    }
+
+    function init() {
+        markEditable();
+        initChromeUI();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+
+</script>
+<!-- /skill:chrome -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knockturnal | Sound in motion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:oklch(9% .012 236);--surface:oklch(13% .018 236);--raised:oklch(18% .02 236);--text:oklch(93% .01 236);--muted:oklch(68% .015 236);--quiet:oklch(47% .012 236);--cyan:oklch(78% .14 193);--coral:oklch(69% .16 25);--line:oklch(29% .018 236);--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;line-height:1.55;overflow-x:hidden}a{color:inherit;text-decoration:none}a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}.mono{font:500 .68rem 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+body:before{content:'';position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");z-index:20}
+.shell{display:grid;grid-template-columns:78px 1fr;min-height:100vh}.rail{border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:24px 0}.rail-logo{writing-mode:vertical-rl;transform:rotate(180deg);font-weight:800;letter-spacing:.12em;color:var(--cyan);font-size:.75rem}.rail-dot{width:26px;height:26px;border:1px solid var(--cyan);border-radius:50%;position:relative}.rail-dot:after{content:'';position:absolute;width:6px;height:6px;background:var(--coral);border-radius:50%;top:4px;right:4px}.rail-year{color:var(--quiet);writing-mode:vertical-rl}
+main{min-width:0}.topbar{height:74px;border-bottom:1px solid var(--line);padding:0 5vw;display:flex;align-items:center;justify-content:space-between}.topbar .location{color:var(--muted)}.links{display:flex;gap:26px;color:var(--muted)}.links a:hover{color:var(--cyan)}
+.hero{min-height:calc(100vh - 74px);padding:9vw 5vw 8vw;display:grid;grid-template-columns:1.15fr .85fr;gap:7vw;align-items:center}.kicker{color:var(--cyan);margin-bottom:26px}.hero h1{font-size:clamp(4.4rem,10vw,10rem);font-weight:800;line-height:.82;letter-spacing:-.11em;max-width:7ch}.hero h1 span{color:var(--coral)}.hero-copy{max-width:45ch;color:var(--muted);font-size:1rem;line-height:1.8;margin-top:34px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}.btn{padding:13px 17px;border:1px solid var(--line);font:500 .68rem 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;transition:transform 180ms var(--ease),color 180ms var(--ease),background 180ms var(--ease),border-color 180ms var(--ease)}.btn:hover{transform:translateY(-3px);border-color:var(--cyan)}.primary{background:var(--cyan);color:var(--bg);border-color:var(--cyan)}.primary:hover{background:var(--text);border-color:var(--text)}
+.signal{aspect-ratio:1/1;max-width:520px;margin-left:auto;border:1px solid var(--line);background:var(--surface);position:relative;overflow:hidden}.signal:before{content:'';position:absolute;inset:12%;border:1px solid var(--line);border-radius:50%;box-shadow:0 0 0 36px var(--surface),0 0 0 37px var(--line),0 0 0 76px var(--surface),0 0 0 77px var(--line),0 0 0 116px var(--surface),0 0 0 117px var(--line)}.signal:after{content:'';position:absolute;width:150%;height:18px;top:48%;left:-20%;background:var(--cyan);transform:rotate(-32deg);box-shadow:0 26px 0 var(--coral),0 -26px 0 var(--bg)}.signal-label{position:absolute;z-index:2;left:22px;top:20px;color:var(--cyan)}.signal-code{position:absolute;z-index:2;right:22px;bottom:20px;color:var(--muted);writing-mode:vertical-rl}.signal-title{position:absolute;z-index:2;left:22px;bottom:20px;font-size:clamp(2rem,4vw,4rem);font-weight:800;letter-spacing:-.1em;line-height:.8}
+.counter-band{display:grid;grid-template-columns:1.1fr .9fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}.counter-copy{padding:54px 5vw}.counter-copy h2{font-size:clamp(2.2rem,5vw,5rem);font-weight:800;line-height:.85;letter-spacing:-.09em;margin:18px 0}.counter-copy p{color:var(--muted);max-width:38ch;font-size:.84rem}.counter-number{padding:54px 5vw;display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--line);background:var(--raised)}.counter-label{color:var(--cyan);margin-bottom:12px}.number{font-size:clamp(4rem,10vw,10rem);font-weight:800;line-height:.8;letter-spacing:-.1em;color:var(--text);font-variant-numeric:tabular-nums}.number small{font-size:.25em;letter-spacing:-.02em;color:var(--cyan);vertical-align:top;margin-left:8px}.counter-meta{color:var(--muted);margin-top:18px;font-size:.78rem}
+.section{padding:10vw 5vw}.section-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:52px}.section-title{font-size:clamp(3rem,7vw,7rem);line-height:.8;letter-spacing:-.11em}.section-note{max-width:32ch;color:var(--muted);font-size:.86rem;line-height:1.7}.tracks{border-top:1px solid var(--line)}.track{display:grid;grid-template-columns:58px 1fr auto;gap:20px;align-items:center;padding:23px 0;border-bottom:1px solid var(--line);transition:padding 180ms var(--ease),background 180ms var(--ease),color 180ms var(--ease)}.track:hover{padding-left:14px;padding-right:14px;background:var(--raised);color:var(--cyan)}.track-no,.track-meta{color:var(--muted)}.track-title{font-size:1.05rem;font-weight:700;letter-spacing:-.03em}.track-sub{color:var(--quiet);margin-top:4px}.track-meta{text-align:right}
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:8vw}.about-copy{font-size:clamp(1.5rem,2.8vw,2.8rem);font-weight:600;line-height:1.1;letter-spacing:-.06em;max-width:22ch}.about-copy strong{color:var(--coral)}.details{border-top:1px solid var(--line)}.detail{display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid var(--line)}.detail span:last-child{text-align:right;color:var(--muted)}
+.services{display:grid;grid-template-columns:1.2fr .8fr;gap:1px;background:var(--line);border:1px solid var(--line)}.service{background:var(--bg);padding:30px;min-height:240px;position:relative;transition:background 180ms var(--ease)}.service:hover{background:var(--surface)}.service:nth-child(2){background:var(--coral);color:var(--bg)}.service:nth-child(2):hover{background:var(--cyan)}.service-no{color:var(--cyan)}.service:nth-child(2) .service-no{color:var(--bg)}.service h3{font-size:2rem;letter-spacing:-.08em;position:absolute;left:30px;bottom:70px}.service p:last-child{position:absolute;left:30px;bottom:28px;max-width:34ch;font-size:.8rem;color:var(--muted)}.service:nth-child(2) p:last-child{color:oklch(15% .02 236 / .78)}
+.contact{padding:13vw 5vw;text-align:center;background:var(--surface);border-top:1px solid var(--line)}.contact h2{font-size:clamp(4rem,12vw,13rem);font-weight:800;line-height:.76;letter-spacing:-.12em}.contact h2 span{color:var(--cyan)}.contact p{max-width:38ch;margin:28px auto 34px;color:var(--muted)}.contact-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.contact-links a{border:1px solid var(--line);padding:12px 15px}.contact-links a:hover{border-color:var(--cyan);color:var(--cyan)}footer{padding:24px 5vw;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;color:var(--muted)}footer a:hover{color:var(--cyan)}
+@media(max-width:760px){.shell{display:block}.rail{display:none}.topbar{height:68px;padding:0 24px}.links{gap:14px}.links a:nth-child(-n+2){display:none}.hero,.section{padding-left:24px;padding-right:24px}.hero{grid-template-columns:1fr;padding-top:20vw;padding-bottom:20vw}.hero h1{font-size:clamp(4.5rem,21vw,9rem)}.signal{width:82%;margin:40px auto 0}.counter-band{grid-template-columns:1fr}.counter-number{border-left:0;border-top:1px solid var(--line);padding-top:45px;padding-bottom:55px}.section{padding-top:80px;padding-bottom:80px}.section-head{display:block}.section-note{margin-top:24px}.track{grid-template-columns:40px 1fr}.track-meta{display:none}.about{grid-template-columns:1fr;gap:56px}.services{grid-template-columns:1fr}.contact{padding:100px 24px}footer{padding:24px;flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="shell"><aside class="rail"><div class="rail-dot"></div><div class="rail-logo">KNOCKTURNAL</div><div class="rail-year mono">ZA / 2026</div></aside><main><header class="topbar"><span class="location mono">South Africa / Sound in motion</span><nav class="links mono"><a href="#tracks">Tracks</a><a href="#about">About</a><a href="#services">Services</a><a href="#contact">Contact</a></nav></header>
+<section class="hero"><div><p class="kicker mono">01 / Beatmaker / Producer</p><h1>Sound<br><span>with</span><br>weight.</h1><p class="hero-copy">Knockturnal is a South African beatmaker building sounds with character. Hip-hop, electronic, and ambient influences, shaped around the feel of the track.</p><div class="actions"><a class="btn primary" href="https://soundcloud.com/knockturnalbeats" target="_blank" rel="noopener">Listen on SoundCloud ↗</a><a class="btn" href="#contact">Start a brief ↓</a></div></div><div class="signal"><p class="signal-label mono">KNOCKTURNAL / SIGNAL 001</p><p class="signal-code mono">SOUND IN MOTION / ZA</p><p class="signal-title">MAKE<br>IT<br>LAND.</p></div></section>
+
+<section class="section" id="tracks"><div class="section-head"><div><p class="kicker mono">Catalogue / 03</p><h2 class="section-title">The<br>archive.</h2></div><p class="section-note">A selection of tracks, collaborations, and flips. Tap any title to hear it on <span style="color:var(--cyan)">SoundCloud.</span></p></div><div class="tracks"><a class="track" href="https://soundcloud.com/knockturnalbeats" target="_blank"><span class="track-no mono">01</span><div><p class="track-title">EVOLVE X 808 SALLIE X ELVIS</p><p class="track-sub mono">Collab / Heavy</p></div><span class="track-meta mono">22.4K</span></a><a class="track" href="https://soundcloud.com/knockturnalbeats" target="_blank"><span class="track-no mono">02</span><div><p class="track-title">JEZEBEL'S TEARS X SVGE</p><p class="track-sub mono">Dark / Atmospheric / 2:13</p></div><span class="track-meta mono">14.8K</span></a><a class="track" href="https://soundcloud.com/knockturnalbeats" target="_blank"><span class="track-no mono">03</span><div><p class="track-title">FUNNY VALENTINE</p><p class="track-sub mono">Melodic / Smooth / 1:37</p></div><span class="track-meta mono">14.3K</span></a><a class="track" href="https://soundcloud.com/knockturnalbeats" target="_blank"><span class="track-no mono">04</span><div><p class="track-title">my Baby</p><p class="track-sub mono">Recent / Chill / 1:28</p></div><span class="track-meta mono">1.1K</span></a><a class="track" href="https://soundcloud.com/knockturnalbeats" target="_blank"><span class="track-no mono">05</span><div><p class="track-title">Walking on a Dream</p><p class="track-sub mono">Dreamy</p></div><span class="track-meta mono">SoundCloud</span></a><a class="track" href="https://soundcloud.com/knockturnalbeats" target="_blank"><span class="track-no mono">06</span><div><p class="track-title">Catalia “knock flip”</p><p class="track-sub mono">Flip / Bounce</p></div><span class="track-meta mono">SoundCloud</span></a><a class="track" href="https://soundcloud.com/knockturnalbeats" target="_blank"><span class="track-no mono">07</span><div><p class="track-title">Rambo Thoughts</p><p class="track-sub mono">Hard / Raw</p></div><span class="track-meta mono">SoundCloud</span></a><a class="track" href="https://soundcloud.com/knockturnalbeats" target="_blank"><span class="track-no mono">08</span><div><p class="track-title">Work It</p><p class="track-sub mono">Groove / Energy</p></div><span class="track-meta mono">SoundCloud</span></a></div></section>
+<section class="section" id="about"><div class="section-head"><div><p class="kicker mono">The producer / 04</p><h2 class="section-title">Sound<br>with intent.</h2></div></div><div class="about"><p class="about-copy">Every beat is shaped around the feel of the track, using <strong>original ideas &amp; samples.</strong> Collaborations with producers like SVGE, 808 Sallie, and Elvis move the catalogue from hard-hitting trap to smooth, introspective instrumentals.</p><div class="details"><div class="detail mono"><span>Based</span><span>South Africa</span></div><div class="detail mono"><span>Sound</span><span>Hip-hop / Electronic / Ambient</span></div><div class="detail mono"><span>Top track</span><span>22K+ plays</span></div><div class="detail mono"><span>Available for</span><span>Licensing / Custom production</span></div></div></div></section>
+<section class="section" id="services"><div class="section-head"><div><p class="kicker mono">Work together / 05</p><h2 class="section-title">The<br>brief.</h2></div><p class="section-note">Two clean ways to get something moving.</p></div><div class="services"><article class="service"><p class="service-no mono">01 / Beat licensing</p><h3>Find the one.</h3><p>Non-exclusive and exclusive leases available, with MP3, WAV, and trackouts depending on your tier.</p></article><article class="service"><p class="service-no mono">02 / Custom production</p><h3>Build the mood.</h3><p>Send a reference track and a brief. Get a beat built around your vision, from first idea to final bounce.</p></article></div></section>
+<section class="contact" id="contact"><p class="kicker mono">06 / Contact</p><h2>Make<br><span>noise.</span></h2><p>Beats, custom production, or a track that needs the right foundation.</p><div class="contact-links"><a href="https://soundcloud.com/knockturnalbeats" target="_blank">SoundCloud ↗</a><a href="https://www.instagram.com/knocturnal__/" target="_blank">Instagram ↗</a><a href="https://wa.me/27662590127" target="_blank">WhatsApp ↗</a></div></section><footer><span class="mono">© 2026 Knockturnal</span><a class="mono" href="https://wa.me/27662590127" target="_blank">066 259 0127</a><span class="mono">Sound in motion / ZA</span></footer></main></div>
+
+</body></html>
